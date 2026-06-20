@@ -1,5 +1,6 @@
+Markdown
 <p align="center">
-  <svg viewBox="0 0 150 150" width="120" height="120" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)">
+  <svg viewBox="0 0 150 150" width="120" height="120" xmlns="http://www.w3.org/2000/svg">
     <path d="M 75,10 A 65,65 0 0,0 75,140" fill="none" stroke="#A000FF" stroke-width="5" stroke-linecap="round" />
     <path d="M 75,140 A 65,65 0 0,0 75,10" fill="none" stroke="#00F0FF" stroke-width="5" stroke-linecap="round" />
     <circle cx="75" cy="75" r="40" fill="none" stroke="#00F0FF" stroke-width="1.5" stroke-dasharray="6 6" />
@@ -18,10 +19,10 @@
 </p>
 
 <p align="center">
-  <img src="[https://img.shields.io/badge/release-stable%201.0.0-00F0FF.svg?style=flat-square](https://img.shields.io/badge/release-stable%201.0.0-00F0FF.svg?style=flat-square)" alt="Release">
-  <img src="[https://img.shields.io/badge/made%20with-bash-A000FF.svg?style=flat-square](https://img.shields.io/badge/made%20with-bash-A000FF.svg?style=flat-square)" alt="Language">
-  <img src="[https://img.shields.io/badge/license-GPLv3-blue.svg?style=flat-square](https://img.shields.io/badge/license-GPLv3-blue.svg?style=flat-square)" alt="License">
-  <img src="[https://img.shields.io/badge/tested%20on-Kali%20Linux-red.svg?style=flat-square](https://img.shields.io/badge/tested%20on-Kali%20Linux-red.svg?style=flat-square)" alt="TestedOn">
+  <img src="https://img.shields.io/badge/release-stable%201.0.0-00F0FF.svg?style=flat-square" alt="Release">
+  <img src="https://img.shields.io/badge/made%20with-bash-A000FF.svg?style=flat-square" alt="Language">
+  <img src="https://img.shields.io/badge/license-GPLv3-blue.svg?style=flat-square" alt="License">
+  <img src="https://img.shields.io/badge/tested%20on-Kali%20Linux-red.svg?style=flat-square" alt="TestedOn">
 </p>
 
 ---
@@ -63,3 +64,69 @@ Launch the wizard directly in your terminal and let the environment guide you th
 
 ```bash
 targ3t
+🤖 Non-Interactive Mode (Headless / CI-CD)
+For automated pipelines or headless console operations, pass explicit operational arguments:
+
+Bash
+targ3t -t <target_ip> -f <report_path> [-p one_or_more_phases]
+📖 System Help Manual
+To print the full parameters, arguments help, and environment flags:
+
+Bash
+targ3t -h
+🎛️ Engine Customization
+You can fine-tune the dictionary paths, wordlists, and file structures by modifying the global variables declared inside the main script file:
+
+Bash
+# TARG3T_PATH='' # CORE PATH ENVIRONMENT (LEAVE EMPTY TO USE CURRENT DIR)
+
+if [[ "$TARG3T_PATH" == '' ]]; then
+	TARG3T_PATH='.'
+fi
+
+# TARGETED USER DICTIONARIES
+USERLIST_HYDRA_SSH="$TARG3T_PATH/user_wordlist_short.txt"
+USERLIST_HYDRA_POP3="$TARG3T_PATH/user_wordlist_short.txt"
+USERLIST_HYDRA_IMAP="$TARG3T_PATH/user_wordlist_short.txt"
+USERLIST_HYDRA_RDP="$TARG3T_PATH/user_wordlist_short.txt"
+USERLIST_HYDRA_SMB="$TARG3T_PATH/user_wordlist_short.txt"
+
+# TARGETED PASSWORD DICTIONARIES
+PASSLIST_HYDRA="$TARG3T_PATH/fasttrack.txt"
+PASSLIST_HYDRA_SSH="$PASSLIST_HYDRA"
+PASSLIST_HYDRA_POP3="$PASSLIST_HYDRA"
+PASSLIST_HYDRA_IMAP="$PASSLIST_HYDRA"
+PASSLIST_HYDRA_RDP="$PASSLIST_HYDRA"
+PASSLIST_HYDRA_SMB="$PASSLIST_HYDRA"
+
+# WEB NAVIGATION DICTIONARIES
+HTTP_WORDLIST="$TARG3T_PATH/custom_url_wordlist.txt"
+HTTP_EXTENSIONS_FILE="$TARG3T_PATH/custom_extensions_common.txt"
+
+# CORE EXPLOIT PLUGINS
+METASPLOIT_SCAN_SCRIPT='./metasploit_scan_script'
+⚡ Core Features
+Subnet Scaling: Concurrent asset scanning optimized to support up to 254 live hosts simultaneously (Class-C segments).
+
+CVE-to-Metasploit Mapping: Instantly correlates discovered CVE identifiers with working Metasploit execution modules.
+
+Non-Canonical Port Tracking: Automatically flags standard services disguised on non-standard entry ports (e.g., HTTP on port 7000).
+
+Exfiltration Vault: Securely logs, isolates, and formats all successfully cracked active credentials into independent reports.
+
+Streamlined Directory Tree: Clear workspace structures that generate intuitive folder hierarchies for raw text and log assets.
+
+🔮 Complementary Tooling
+During the development of the primary automation suite, a companion layout named trigmap (Trigger Nmap) was built.
+
+[!TIP]
+While Targ3t leverages a wide array of separate ecosystem binaries (Nikto, Hydra, Dirb), trigmap focuses entirely on maximizing the raw scriptability of Nmap NSE modules. Running both utilities concurrently across a target provides a much deeper, cross-verified evidence dossier.
+
+⚖️ Disclaimer
+[!WARNING]
+CRITICAL SECURITY NOTE: The developer assumes absolutely no liability and is not responsible for any malicious misuse, unauthorized network disruption, or data loss caused by this script.
+
+Targ3t is distributed strictly for authorized penetration testing environments and educational security research. It is provided "AS IS" without any explicit or implied warranty of merchantability or fitness for a particular purpose.
+
+📄 License
+This repository is open-source software distributed under the terms of the GPLv3 License. Review the main project LICENSE parameters for complete copyleft conditions.
